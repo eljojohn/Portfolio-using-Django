@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+
+
+
+
+<!-- ================= HOME HERO ================= -->
+<section class="hero">
+    <div class="hero-container">
+
+        <!-- PROFILE IMAGE -->
+        {% if profile and profile.profile_image %}
+            <img src="{{ profile.profile_image.url }}" class="profile-img">
+        {% else %}
+            <img src="{% static 'images/profile.png' %}" class="profile-img">
+        {% endif %}
+
+        <!-- NAME -->
+        <h1 class="hero-name gold">
+            {{ profile.user.username|default:"Eljo John" }}
+        </h1>
+
+        <!-- TAGLINE 
+        <h3 class="hero-tagline">
+            Python • Django • Data Science Enthusiast
+        </h3>  -->
+
+        <!-- BIO -->
+        <p class="hero-text">
+            {{ profile.bio|default:"Passionate Django developer building scalable full-stack applications using Django, DRF, PostgreSQL and modern web technologies." }}
+        </p>
+
+        <!-- BUTTONS -->
+           <div class="hero-buttons">
+
+    <a href="{% url 'projects' %}" class="gold-btn">View Projects</a>
+
+    <a href="https://github.com/eljojohn"
+       target="_blank"
+       class="gold-btn">GitHub</a>
+
+    <a href="https://www.linkedin.com/in/eljo-john/"
+       target="_blank"
+       class="gold-btn">LinkedIn</a>
+
+</div>
+
+    </div>
+</section>
+
+
+<!-- ================= ABOUT SECTION ================= -->
+<!-- ABOUT SECTION -->
+<section class="section" id="about">
+
+    <div class="about-container">
+
+        <h2 class="gold">About Me</h2>
+
+        <p class="hero-text">
+         I am Eljo John, a third-year CSE student interested in both Django development and data science. I develop full-stack web applications using Django and PostgreSQL and actively work with Python for data analysis and exploratory data science projects. I focus on building clean, scalable systems and leveraging data to create meaningful solutions.
+        </p>
+
+        <div class="about-buttons">
+            <a href="{% url 'contact' %}" class="gold-btn">Hire Me</a>
+
+            <!-- Resume Download -->
+            <a href="{% static 'files/resume.pdf' %}"
+               class="gold-btn"
+               download>
+               Download Resume
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SKILLS SECTION ================= -->
+<section id="skills" class="section">
+
+    <h2 class="gold center">My Skills</h2>
+
+    <div class="skills-grid">
+
+        <!-- Backend -->
+        <div class="skill-card">
+            <h3>Backend Development</h3>
+            <div class="skill-tags">
+                <span>Django</span>
+                <span>Django REST Framework</span>
+                <span>Python</span>
+                <span>PostgreSQL</span>
+                <span>API Development</span>
+            </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-card">
+            <h3>Frontend</h3>
+            <div class="skill-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>JavaScript</span>
+                <span>Bootstrap</span>
+                <span>Responsive Design</span>
+            </div>
+        </div>
+
+        <!-- Data Science -->
+        <div class="skill-card">
+            <h3>Data Science</h3>
+            <div class="skill-tags">
+                <span>Pandas</span>
+                <span>NumPy</span>
+                <span>EDA</span>
+                <span>Matplotlib</span>
+                <span>Data Analysis</span>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="skill-card">
+            <h3>Tools & Platforms</h3>
+            <div class="skill-tags">
+                <span>Git</span>
+                <span>GitHub</span>
+                <span>Linux</span>
+                <span>VS Code</span>
+                <span>Docker (Learning)</span>
+            </div>
+        </div>
+
+        <!-- Concepts -->
+        <div class="skill-card">
+            <h3>Concepts</h3>
+            <div class="skill-tags">
+                <span>REST APIs</span>
+                <span>Authentication</span>
+                <span>MVT Architecture</span>
+                <span>Database Design</span>
+                <span>Problem Solving</span>
+            </div>
+        </div>
+        <div class="skill-card">
+    <h3>Programming Languages</h3>
+
+    <div class="skill-tags">
+        <span>Python</span>
+        <span>Java</span>
+        <span>C++</span>
+      <!---- <span>JavaScript</span> -->
+        <span>C</span>
+    </div>
+</div>
+
+
+    </div>
+
+</section>
+
+
+
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="section">
+    <h2 class="gold center">Featured Projects</h2>
+
+    <div class="project-grid">
+
+        {% for project in projects %}
+        <div class="project-card">
+
+            {% if project.image %}
+            <img src="{{ project.image.url }}">
+            {% endif %}
+
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description|truncatewords:20 }}</p>
+
+            <a href="{% url 'project_detail' project.slug %}" class="gold-btn-sm">
+
+                View
+            </a>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+
+{% endblock %}

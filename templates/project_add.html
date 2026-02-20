@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card p-4">
+
+            <h3 class="gold-text mb-4 text-center">
+                Add Project
+            </h3>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <input type="text" name="title"
+                       placeholder="Project Title"
+                       class="form-control mb-3">
+
+                <textarea name="description"
+                          placeholder="Description"
+                          rows="4"
+                          class="form-control mb-3"></textarea>
+
+                <input type="text" name="tech_stack"
+                       placeholder="Tech Stack"
+                       class="form-control mb-3">
+
+                <input type="url" name="github_link"
+                       placeholder="GitHub Link"
+                       class="form-control mb-3">
+
+                <input type="url" name="live_demo_link"
+                       placeholder="Live Demo Link"
+                       class="form-control mb-3">  
+
+                <button type="submit"
+                        class="btn gold-btn w-100">
+                    Add Project
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

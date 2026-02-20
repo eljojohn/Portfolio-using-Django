@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card p-4">
+
+            <h3 class="gold-text mb-4 text-center">
+                Contact Me
+            </h3>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <input type="text" name="name"
+                       placeholder="Your Name"
+                       class="form-control mb-3">
+
+                <input type="email" name="email"
+                       placeholder="Your Email"
+                       class="form-control mb-3">
+
+                <textarea name="message"
+                          rows="4"
+                          placeholder="Your Message"
+                          class="form-control mb-3"></textarea>
+
+                <button type="submit"
+                        class="btn gold-btn w-100">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

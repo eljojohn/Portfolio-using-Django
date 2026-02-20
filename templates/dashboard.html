@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="text-center mb-5">
+
+    <h1 class="gold-text fw-bold display-5">
+        Welcome, {{ user.username }}
+    </h1>
+
+    <p class="text-light">
+        This is your personal dashboard.
+    </p>
+
+</section>
+
+
+<!-- QUICK ACTIONS -->
+<section class="mb-5">
+
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'project_add' %}" class="btn gold-btn w-100">
+                + Add New Project
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <a href="{% url 'projects' %}" class="btn btn-outline-warning w-100">
+                View All Projects
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-3">
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger w-100">
+                    Logout
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS SECTION -->
+<section>
+
+<!-- PROJECTS SECTION     <h2 class="gold-text text-center mb-4">Your Projects</h2> -->
+
+    <div class="row">
+
+        {% for project in projects %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card p-4 h-100">
+
+                <h5 class="text-light">{{ project.title }}</h5>
+
+                <p class="text-light">
+                    {{ project.description|truncatewords:15 }}
+                </p>
+
+                <div class="mt-auto d-flex justify-content-between">
+
+                    <a href="{% url 'project_edit' project.slug %}"
+                       class="btn btn-outline-warning btn-sm">
+                       Edit
+                    </a>
+
+                    <form action="{% url 'project_delete' project.slug %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <p class="text-center text-light">
+    <!-- PROJECTS SECTION         No projects added yet.  -->
+        </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

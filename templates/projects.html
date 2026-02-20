@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2 class="fw-bold gold-text text-center mb-5">
+    All Projects
+</h2>
+
+<div class="row">
+
+    {% for project in projects %}
+
+    <div class="col-md-4 mb-4">
+
+        <div class="card h-100 p-4 d-flex flex-column">
+
+            <h5 class="text-light">
+                {{ project.title }}
+            </h5>
+
+            <p class="text-light">
+                {{ project.description|truncatewords:20 }}
+            </p>
+
+            <div class="mt-auto">
+                <a href="/projects/{{ project.slug }}/"
+                   class="btn gold-btn btn-sm">
+                   View Project
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <p class="text-center text-light">
+        No projects available.
+    </p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
