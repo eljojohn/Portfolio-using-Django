@@ -17,8 +17,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG") == "True"
-
+  # DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = True
 # ✅ Production: add your Render domain here
 ALLOWED_HOSTS = ['*']
 
