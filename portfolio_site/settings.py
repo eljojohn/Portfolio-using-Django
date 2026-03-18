@@ -20,17 +20,11 @@ SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
 DEBUG = os.getenv("DEBUG") == "True"
 
 # ✅ Production: add your Render domain here
-ALLOWED_HOSTS = [
-    "portfolio-using-django-9zh4.onrender.com",
-    "localhost",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = ['*']
 
-# ✅ For CSRF protection
 CSRF_TRUSTED_ORIGINS = [
-    "https://portfolio-using-django-9zh4.onrender.com"
+    "https://*.onrender.com"
 ]
-
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
