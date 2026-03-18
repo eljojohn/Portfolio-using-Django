@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "api_app",
 
     "rest_framework",
-    "django_tailwind",
+  
 ]
 
 MIDDLEWARE = [
