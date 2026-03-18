@@ -21,14 +21,14 @@ DEBUG = os.getenv("DEBUG") == "True"
 
 # ✅ Production: add your Render domain here
 ALLOWED_HOSTS = [
-    "portfolio-using-django-1-8db2.onrender.com",
+    "portfolio-using-django-9zh4.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
 
 # ✅ For CSRF protection
 CSRF_TRUSTED_ORIGINS = [
-    "https://portfolio-using-django-1-8db2.onrender.com"
+    "https://portfolio-using-django-9zh4.onrender.com"
 ]
 
 # Application definition
